@@ -4,12 +4,12 @@
 # @Email: thepoy@163.com
 # @File Name: setup.py (c) 2021
 # @Created:  2021-05-27 08:37:45
-# @Modified: 2021-05-27 08:58:26
+# @Modified: 2021-05-27 09:27:04
 
 import codecs
 import colort
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 with codecs.open("README.md", "r", "utf-8") as fd:
     setup(
@@ -25,4 +25,5 @@ with codecs.open("README.md", "r", "utf-8") as fd:
         url="https://github.com/thep0y/colort",
         license="MIT",
         keywords="color terminal",
+        packages=find_packages(),
     )

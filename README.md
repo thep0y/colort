@@ -12,9 +12,7 @@ pip install colort
 ### 使用
 
 ```python
-from colort import DisplayStyle 
-
-ds = DisplayStyle()
+from colort import display_style as ds
 
 src = "这是要显示的文本"
 dist = ds.format_with_one_style(src, ds.foreground_color.red)

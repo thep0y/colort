@@ -4,9 +4,9 @@
 # @Email: thepoy@163.com
 # @File Name: update.py
 # @Created:  2021-05-27 08:32:47
-# @Modified: 2021-05-27 08:56:48
+# @Modified: 2021-05-27 09:06:27
 
-__version__ = "0.1"
+__version__ = "0.2"
 
 
 class _Mode:
@@ -122,6 +122,9 @@ class DisplayStyle:
         if type(src) != str:
             raise TypeError(f"type of `src` is {type(src)}, not str")
 
+        if type(style) != int:
+            raise TypeError(f"type of `style` is {type(src)}, not int")
+
         fmt = '\033[%dm%s\033[%dm'
         return fmt % (style, src, self.end)
 
@@ -131,6 +134,13 @@ class DisplayStyle:
 
         if len(styles) < 2:
             raise TypeError("At least two styles")
-        styles = [str(i) for i in styles]
-        style = ";".join(styles)
+
+        styles_str = []
+
+        for style in styles:
+            if type(style) != int:
+                raise TypeError(f"type of `style` - [ {style} ] is {type(src)}, not int")
+            styles_str.append(str(style))
+
+        style = ";".join(styles_str)
         return f"\033[{style}m{src}\033[{self.end}m"

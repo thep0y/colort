@@ -4,7 +4,7 @@
 # @Email: thepoy@163.com
 # @File Name: update.py
 # @Created:  2021-05-27 08:32:47
-# @Modified: 2021-05-27 09:06:27
+# @Modified: 2021-05-28 08:52:41
 
 __version__ = "0.2"
 
@@ -48,7 +48,7 @@ class _ForegroundColor:
 
     @property
     def red(self):
-        return 41
+        return 31
 
     @property
     def green(self):

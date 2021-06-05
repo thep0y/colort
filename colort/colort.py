@@ -2,111 +2,135 @@
 # -*- coding: utf-8 -*-
 # @Author: thepoy
 # @Email: thepoy@163.com
-# @File Name: update.py
+# @File Name: colort.py
 # @Created:  2021-05-27 08:32:47
-# @Modified: 2021-05-28 08:52:41
+# @Modified: 2021-06-05 09:48:24
 
-__version__ = "0.2"
+from typing import NewType
+
+Style = NewType("style", int)
 
 
 class _Mode:
+    """模式"""
+
     @property
-    def normal(self):
+    def normal(self) -> Style:
         """终端默认样式"""
-        return 0
+        return Style(0)
 
     @property
-    def bold(self):
+    def bold(self) -> Style:
         """高亮或加粗"""
-        return 1
+        return Style(1)
 
     @property
-    def underline(self):
+    def underline(self) -> Style:
         """下划线"""
-        return 4
+        return Style(4)
 
     @property
-    def blink(self):
+    def blink(self) -> Style:
         """闪烁"""
-        return 5
+        return Style(5)
 
     @property
-    def invert(self):
+    def invert(self) -> Style:
         """反白"""
-        return 7
+        return Style(7)
 
     @property
-    def hide(self):
+    def hide(self) -> Style:
         """隐藏"""
-        return 8
+        return Style(8)
 
 
 class _ForegroundColor:
-    @property
-    def black(self):
-        return 30
+    """前景色 / 文字颜色"""
 
     @property
-    def red(self):
-        return 31
+    def black(self) -> Style:
+        """黑色"""
+        return Style(30)
 
     @property
-    def green(self):
-        return 32
+    def red(self) -> Style:
+        """红色"""
+        return Style(31)
 
     @property
-    def yellow(self):
-        return 33
+    def green(self) -> Style:
+        """绿色"""
+        return Style(32)
 
     @property
-    def blue(self):
-        return 34
+    def orange(self) -> Style:
+        """橙色"""
+        return Style(33)
 
     @property
-    def purple(self):
-        return 35
+    def blue(self) -> Style:
+        """蓝色"""
+        return Style(34)
 
     @property
-    def cyan(self):
-        return 36
+    def purple(self) -> Style:
+        """紫色"""
+        return Style(35)
 
     @property
-    def white(self):
-        return 37
+    def cyan(self) -> Style:
+        """青色"""
+        return Style(36)
+
+    @property
+    def white(self) -> Style:
+        """白色"""
+        return Style(37)
 
 
 class _BackgroudColor:
-    @property
-    def black(self):
-        return 40
+    """背景色"""
 
     @property
-    def red(self):
-        return 41
+    def black(self) -> Style:
+        """黑色"""
+        return Style(40)
 
     @property
-    def green(self):
-        return 42
+    def red(self) -> Style:
+        """红色"""
+        return Style(41)
 
     @property
-    def yellow(self):
-        return 43
+    def green(self) -> Style:
+        """绿色"""
+        return Style(42)
 
     @property
-    def blue(self):
-        return 44
+    def orange(self) -> Style:
+        """橙色"""
+        return Style(43)
 
     @property
-    def purple(self):
-        return 45
+    def blue(self) -> Style:
+        """蓝色"""
+        return Style(44)
 
     @property
-    def cyan(self):
-        return 46
+    def purple(self) -> Style:
+        """紫色"""
+        return Style(45)
 
     @property
-    def white(self):
-        return 47
+    def cyan(self) -> Style:
+        """青色"""
+        return Style(46)
+
+    @property
+    def white(self) -> Style:
+        """白色"""
+        return Style(47)
 
 
 class DisplayStyle:
@@ -115,20 +139,58 @@ class DisplayStyle:
     mode = _Mode()
 
     @property
-    def end(self):
-        return 0
+    def end(self) -> Style:
+        return Style(0)
 
-    def format_with_one_style(self, src: str, style: int) -> str:
+    def format_with_one_style(self, src: str, style: Style) -> str:
+        """用一种样式格式化输出的文字
+
+        Parameters
+        ----------
+        src : {str}
+            待格式化的源文字
+        style : {Style}
+            要使用的样式
+
+        Returns
+        -------
+        str
+            格式化后的文字
+
+        Raises
+        ------
+        TypeError
+            源文字或样式不是要求的类型时抛异常
+        """
         if type(src) != str:
             raise TypeError(f"type of `src` is {type(src)}, not str")
 
-        if type(style) != int:
-            raise TypeError(f"type of `style` is {type(src)}, not int")
+        if type(style) != Style and type(style) != int:
+            raise TypeError(f"type of `style` is {type(style)}, not Style or int")
 
-        fmt = '\033[%dm%s\033[%dm'
+        fmt = "\033[%dm%s\033[%dm"
         return fmt % (style, src, self.end)
 
-    def format_with_multiple_styles(self, src: str, *styles: int) -> str:
+    def format_with_multiple_styles(self, src: str, *styles: Style) -> str:
+        """用多种样式格式化输出的文字
+
+        Parameters
+        ----------
+        src : {str}
+            待格式化的源文字
+        *styles : {[Style]}
+            要使用的样式，需要输入两种或以上的样式
+
+        Returns
+        -------
+        str
+            格式化后的文字
+
+        Raises
+        ------
+        TypeError
+            源文字或某一个样式不是要求的类型时抛异常
+        """
         if type(src) != str:
             raise TypeError(f"type of `src` is {type(src)}, not str")
 
@@ -138,8 +200,8 @@ class DisplayStyle:
         styles_str = []
 
         for style in styles:
-            if type(style) != int:
-                raise TypeError(f"type of `style` - [ {style} ] is {type(src)}, not int")
+            if type(style) != Style and type(style) != int:
+                raise TypeError(f"type of `style` is {type(style)}, not Style or int")
             styles_str.append(str(style))
 
         style = ";".join(styles_str)

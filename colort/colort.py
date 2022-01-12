@@ -4,11 +4,10 @@
 # @Email: thepoy@163.com
 # @File Name: colort.py
 # @Created:  2021-05-27 08:32:47
-# @Modified: 2021-06-05 09:48:24
+# @Modified:  2022-01-12 22:38:40
 
-from typing import NewType
 
-Style = NewType("style", int)
+Style = int
 
 
 class _Mode:
@@ -17,32 +16,32 @@ class _Mode:
     @property
     def normal(self) -> Style:
         """终端默认样式"""
-        return Style(0)
+        return 0
 
     @property
     def bold(self) -> Style:
         """高亮或加粗"""
-        return Style(1)
+        return 1
 
     @property
     def underline(self) -> Style:
         """下划线"""
-        return Style(4)
+        return 4
 
     @property
     def blink(self) -> Style:
         """闪烁"""
-        return Style(5)
+        return 5
 
     @property
     def invert(self) -> Style:
         """反白"""
-        return Style(7)
+        return 7
 
     @property
     def hide(self) -> Style:
         """隐藏"""
-        return Style(8)
+        return 8
 
 
 class _ForegroundColor:
@@ -51,42 +50,82 @@ class _ForegroundColor:
     @property
     def black(self) -> Style:
         """黑色"""
-        return Style(30)
+        return 30
 
     @property
     def red(self) -> Style:
         """红色"""
-        return Style(31)
+        return 31
 
     @property
     def green(self) -> Style:
         """绿色"""
-        return Style(32)
+        return 32
 
     @property
-    def orange(self) -> Style:
-        """橙色"""
-        return Style(33)
+    def yellow(self) -> Style:
+        """黄色"""
+        return 33
 
     @property
     def blue(self) -> Style:
         """蓝色"""
-        return Style(34)
+        return 34
 
     @property
     def purple(self) -> Style:
         """紫色"""
-        return Style(35)
+        return 35
 
     @property
     def cyan(self) -> Style:
         """青色"""
-        return Style(36)
+        return 36
+
+    @property
+    def light_gray(self) -> Style:
+        """亮灰色"""
+        return 37
+
+    @property
+    def dark_gray(self) -> Style:
+        """暗灰色"""
+        return 90
+
+    @property
+    def light_red(self) -> Style:
+        """亮红色"""
+        return 91
+
+    @property
+    def light_green(self) -> Style:
+        """亮绿色"""
+        return 92
+
+    @property
+    def light_yellow(self) -> Style:
+        """亮黄色"""
+        return 93
+
+    @property
+    def light_blue(self) -> Style:
+        """暗灰色"""
+        return 94
+
+    @property
+    def light_purple(self) -> Style:
+        """亮紫色"""
+        return 95
+
+    @property
+    def light_cyan(self) -> Style:
+        """亮青色"""
+        return 96
 
     @property
     def white(self) -> Style:
         """白色"""
-        return Style(37)
+        return 97
 
 
 class _BackgroudColor:
@@ -95,47 +134,87 @@ class _BackgroudColor:
     @property
     def black(self) -> Style:
         """黑色"""
-        return Style(40)
+        return 40
 
     @property
     def red(self) -> Style:
         """红色"""
-        return Style(41)
+        return 41
 
     @property
     def green(self) -> Style:
         """绿色"""
-        return Style(42)
+        return 42
 
     @property
-    def orange(self) -> Style:
-        """橙色"""
-        return Style(43)
+    def yellow(self) -> Style:
+        """黄色"""
+        return 43
 
     @property
     def blue(self) -> Style:
         """蓝色"""
-        return Style(44)
+        return 44
 
     @property
     def purple(self) -> Style:
         """紫色"""
-        return Style(45)
+        return 45
 
     @property
     def cyan(self) -> Style:
         """青色"""
-        return Style(46)
+        return 46
+
+    @property
+    def light_gray(self) -> Style:
+        """亮灰色"""
+        return 47
+
+    @property
+    def dark_gray(self) -> Style:
+        """暗灰色"""
+        return 100
+
+    @property
+    def light_red(self) -> Style:
+        """亮红色"""
+        return 101
+
+    @property
+    def light_green(self) -> Style:
+        """亮绿色"""
+        return 102
+
+    @property
+    def light_yellow(self) -> Style:
+        """亮黄色"""
+        return 103
+
+    @property
+    def light_blue(self) -> Style:
+        """亮蓝色"""
+        return 104
+
+    @property
+    def light_purple(self) -> Style:
+        """亮紫色"""
+        return 105
+
+    @property
+    def light_cyan(self) -> Style:
+        """亮青色"""
+        return 106
 
     @property
     def white(self) -> Style:
         """白色"""
-        return Style(47)
+        return 107
 
 
 class DisplayStyle:
-    foreground_color = _ForegroundColor()
-    backgorud_color = _BackgroudColor()
+    fc = foreground_color = _ForegroundColor()
+    bc = backgorud_color = _BackgroudColor()
     mode = _Mode()
 
     @property

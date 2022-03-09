@@ -4,7 +4,7 @@
 # @Email:     thepoy@163.com
 # @File Name: colort.py
 # @Created:   2021-05-27 08:32:47
-# @Modified:  2022-03-09 11:16:38
+# @Modified:  2022-03-09 11:19:46
 
 
 Style = int
@@ -268,7 +268,7 @@ class DisplayStyle:
             源文字或某一个样式不是要求的类型时抛异常
         """
         if len(styles) < 2:
-            raise TypeError("At least two styles")
+            raise ValueError("at least 2 styles")
 
         styles_str = []
 

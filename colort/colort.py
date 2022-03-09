@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Author: thepoy
-# @Email: thepoy@163.com
+# @Author:    thepoy
+# @Email:     thepoy@163.com
 # @File Name: colort.py
-# @Created:  2021-05-27 08:32:47
-# @Modified:  2022-01-12 22:38:40
+# @Created:   2021-05-27 08:32:47
+# @Modified:  2022-03-09 11:16:38
 
 
 Style = int
@@ -219,7 +219,7 @@ class DisplayStyle:
 
     @property
     def end(self) -> Style:
-        return Style(0)
+        return 0
 
     def format_with_one_style(self, src: str, style: Style) -> str:
         """用一种样式格式化输出的文字
@@ -241,9 +241,6 @@ class DisplayStyle:
         TypeError
             源文字或样式不是要求的类型时抛异常
         """
-        if type(src) != str:
-            raise TypeError(f"type of `src` is {type(src)}, not str")
-
         if type(style) != Style and type(style) != int:
             raise TypeError(f"type of `style` is {type(style)}, not Style or int")
 
@@ -270,9 +267,6 @@ class DisplayStyle:
         TypeError
             源文字或某一个样式不是要求的类型时抛异常
         """
-        if type(src) != str:
-            raise TypeError(f"type of `src` is {type(src)}, not str")
-
         if len(styles) < 2:
             raise TypeError("At least two styles")
 

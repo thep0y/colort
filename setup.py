@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Author: thepoy
-# @Email: thepoy@163.com
-# @File Name: setup.py (c) 2021
-# @Created:  2021-05-27 08:37:45
-# @Modified: 2021-05-27 09:27:04
+# @Author:    thepoy
+# @Email:     thepoy@163.com
+# @File Name: setup.py
+# @Created:   2021-05-27 08:37:45
+# @Modified:  2022-03-09 11:15:26
 
 import codecs
 import colort
@@ -15,9 +15,9 @@ with codecs.open("README.md", "r", "utf-8") as fd:
     setup(
         name="colort",
         version=colort.__version__,
-        description='''
+        description="""
         Display colored text in the terminal
-        ''',
+        """,
         long_description_content_type="text/markdown",
         long_description=fd.read(),
         author="thepoy",

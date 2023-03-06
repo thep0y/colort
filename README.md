@@ -1,4 +1,11 @@
-# colort
+<h1 align="center">Colort</h1>
+
+<p align="center">
+    <a href="https://pepy.tech/project/colort"><img alt="Downloads" src="https://static.pepy.tech/badge/colort"></a>    
+    <a href="https://pepy.tech/project/colort"><img alt="Downloads" src="https://static.pepy.tech/badge/colort/month"></a>
+    <a href="https://pepy.tech/project/colort"><img alt="Downloads" src="https://static.pepy.tech/badge/colort/week"></a>
+</p>
+
 终端中的彩色显示
 
 ## 使用

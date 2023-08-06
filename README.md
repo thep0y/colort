@@ -6,30 +6,52 @@
     <a href="https://pepy.tech/project/colort"><img alt="Downloads" src="https://static.pepy.tech/badge/colort/week"></a>
 </p>
 
-终端中的彩色显示
+This module provides functions for formatting text with ANSI escape codes to add color and style.
 
-## 使用
-
-### 安装
+## Installation
 
 ```shell
 pip install colort
 ```
 
-### 使用
+## Usage
 
 ```python
-from colort import display_style as ds
-
-src = "这是要显示的文本"
-dist = ds.format_with_one_style(src, ds.foreground_color.red)
-print("更改文字颜色：", dist)
-dist = ds.format_with_one_style(src, ds.backgorud_color.green)
-print("更改文字背景色：", dist)
-dist = ds.format_with_multiple_styles(src, ds.foreground_color.red, ds.mode.underline, ds.mode.bold)
-print("多种样式：", dist)
+from colort import colorize
 ```
 
-效果：
+The `colorize` function takes a string and any number of `Style` and `*Color` enums. It returns the string formatted with the specified styles.
 
-![sample](https://cdn.jsdelivr.net/gh/thep0y/image-bed/md/1622076879923.png)
+For example:
+
+```python
+from colorformat import colorize, ForegroundColor as fc, Style
+
+colored_text = colorize('Hello World!', fc.GREEN, Style.BOLD)
+print("colored text: ", colored_text)
+```
+
+This will print the text in bold and green.
+
+![截屏2023-08-06 11.03.47](https://s1.ax1x.com/2023/08/06/pPANNxs.png)
+
+The available formatting options are:
+
+### Colors
+
+- ForegroundColor
+  - BLACK, RED, GREEN, YELLOW, BLUE, etc.
+- BackgroundColor
+  - BLACK, RED, GREEN, YELLOW, BLUE, etc.
+
+### Styles
+
+- Style
+  - NORMAL, BOLD, UNDERLINE, BLINK, INVERT, HIDE
+
+Multiple styles can be combined:
+
+```python
+colorize('Text', ForegroundColor.WHITE, BackgroundColor.RED, Style.BOLD)
+```
+

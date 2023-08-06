@@ -32,7 +32,7 @@ class ForegroundColor(IntEnum):
     WHITE = 97
 
 
-class BackgorudColor(IntEnum):
+class BackgroundColor(IntEnum):
     BLACK = 40
     RED = 41
     GREEN = 42
@@ -52,10 +52,10 @@ class BackgorudColor(IntEnum):
 
 
 fc = ForegroundColor
-bc = BackgorudColor
+bc = BackgroundColor
 
 
-StyleType = Style | ForegroundColor | BackgorudColor
+StyleType = Style | ForegroundColor | BackgroundColor
 
 
 class Formatter:

@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from enum import IntEnum
+from typing import Union
 
 
 class Style(IntEnum):
@@ -55,7 +56,7 @@ fc = ForegroundColor
 bc = BackgroundColor
 
 
-StyleType = Style | ForegroundColor | BackgroundColor
+StyleType = Union[Style, ForegroundColor, BackgroundColor]
 
 
 class Formatter:
